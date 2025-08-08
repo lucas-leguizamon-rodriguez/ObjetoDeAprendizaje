@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio - Python Fácil</title>
+  <style>
+    body {
+      padding-bottom: 120px; 
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      text-align: center;
+    }
+
+    main {
+      padding: 40px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      background-color: #f4f4f4;
+    }
+
+    .card {
+      background-color: #f0f8ff;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      max-width: 1000px;
+      text-align: center;
+      padding: 20px;
+      transition: transform 0.3s;
+      margin: 20px auto;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+    }
+
+    .card img {
+      max-width: 100px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      color: #306998;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #333;
+      font-size: 16px;
+      text-align: justify;
+      margin-bottom: 10px;
+    }
+
+    .card-small {
+      max-width: 300px;
+      cursor: pointer;
+      background-color: #f0f8ff;
+      border: 1px solid #ddd;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      padding: 20px;
+      transition: transform 0.3s;
+      margin: 0;
+    }
+
+    .card-small:hover {
+      transform: scale(1.02);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img src="https://cdn-icons-png.flaticon.com/128/5968/5968350.png" alt="¿Qué es Python?">
+    <h3>¿Qué es Python?</h3>
+    <p>Python es un lenguaje de programación muy utilizado por su simplicidad y legibilidad. Es ideal para quienes recién comienzan a programar, y también es poderoso para proyectos avanzados como inteligencia artificial, desarrollo web, análisis de datos y más.</p>
+    <p>¡Con Python podés empezar a crear programas útiles desde el primer día!</p>
+  </div>
+
+  <div class="card">
+    <h3>Historia e Impacto</h3>
+    <p>Python fue creado por Guido van Rossum a fines de los años 80 y lanzado en 1991. Su objetivo era lograr un lenguaje claro, simple y potente.</p>
+    <p>Actualmente es uno de los lenguajes más usados en el mundo, con aplicaciones en ciencia de datos, automatización, desarrollo web, IA, videojuegos, y más.</p>
+    <p>Su comunidad activa y la gran cantidad de recursos lo convierten en una excelente herramienta tanto para aprender como para trabajar profesionalmente.</p>
+  </div>
+
+  <main>
+    <div class="card card-small" onclick="cargarContenido('variables.html')">
+      <img src="https://cdn-icons-png.flaticon.com/128/4215/4215538.png" alt="Variables">
+      <h3>Variables</h3>
+      <p>Descubrí cómo almacenar y manipular datos usando variables en Python con ejemplos fáciles y explicativos.</p>
+    </div>
+
+    <div class="card card-small" onclick="cargarContenido('condicionales.html')">
+      <img src="https://cdn-icons-png.flaticon.com/128/17359/17359058.png" alt="Condicionales">
+      <h3>Condicionales</h3>
+      <p>Aprendé a tomar decisiones con <code>if</code>, <code>elif</code> y <code>else</code> para controlar el flujo de tu programa.</p>
+    </div>
+
+    <div class="card card-small" onclick="cargarContenido('ejercicios.html')">
+      <img src="https://cdn-icons-png.flaticon.com/128/1032/1032129.png" alt="Ejercicios">
+      <h3>Ejercicios</h3>
+      <p>Practicá lo aprendido con ejercicios interactivos y afianzá tus conocimientos de programación en Python.</p>
+    </div>
+  </main>
+  <br>
+  <br>
+  <br>
+
+  <script>
+    function cargarContenido(pagina) {
+      fetch(pagina)
+        .then(response => response.text())
+        .then(data => {
+          document.open();
+          document.write(data);
+          document.close();
+        });
+    }
+  </script>
+</body>
+</html>

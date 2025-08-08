@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Condicionales en Python</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      padding-bottom: 80px; 
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    .contenedor {
+      width: 90%;
+      max-width: 1000px;
+      margin: 20px auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+
+    h2 {
+      text-align: center;
+      color: #306998;
+      margin-bottom: 25px;
+    }
+
+    h3 {
+      color: #306998;
+      margin-bottom: 15px;
+      font-size: 1.4em;
+    }
+
+    pre {
+      background-color: #eee;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      padding-left: 0;
+      list-style-type: none;
+      margin-bottom: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    code {
+      background-color: #dfe6e9;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: "Courier New", monospace;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="contenedor">
+    <h2> Condicionales en Python</h2>
+
+    <p>Las <strong>condicionales</strong> permiten que un programa tome decisiones evaluando si una condición es verdadera o falsa. En Python, usamos <code>if</code>, <code>elif</code> y <code>else</code> para esto.</p>
+
+    <h3>Sintaxis básica</h3>
+    <pre><code>if condicion:
+    # bloque de código si la condición es verdadera
+else:
+    # bloque de código si la condición es falsa</code></pre>
+
+    <h3> Condición con elif</h3>
+    <pre><code>nota = 7
+
+if nota >= 9:
+    print("Excelente")
+elif nota >= 6:
+    print("Aprobado")
+else:
+    print("Reprobado")</code></pre>
+
+    <h3> ¿Qué es print()?</h3>
+    <p>La función <code>print()</code> se utiliza para mostrar información en pantalla. En el caso de las condicionales, permite visualizar qué camino tomó el programa según la condición.</p>
+
+    <h3> Comparadores más usados</h3>
+    <ul>
+      <li><code>==</code> igual a</li>
+      <li><code>!=</code> distinto de</li>
+      <li><code>&gt;</code> mayor que</li>
+      <li><code>&lt;</code> menor que</li>
+      <li><code>&gt;=</code> mayor o igual que</li>
+      <li><code>&lt;=</code> menor o igual que</li>
+    </ul>
+
+    <h3> Buenas prácticas</h3>
+    <ul>
+      <li>Usá identación consistente (4 espacios) después de <code>if</code>, <code>elif</code> o <code>else</code></li>
+      <li>Escribí condiciones claras y fáciles de leer</li>
+      <li>No olvides los dos puntos <code>:</code> al final de la línea condicional</li>
+    </ul>
+
+    <h3> Ejemplo completo con entrada de datos</h3>
+    <pre><code>edad = 17
+
+if edad >= 18:
+    print("Sos mayor de edad")
+else:
+    print("Sos menor de edad")</code></pre>
+
+    <h3> Ejercicio práctico</h3>
+    <p>Completá el siguiente código que analiza la edad y condición de socio para ver si la persona accede a un beneficio:</p>
+    <pre><code>edad = 20
+es_socio = True
+
+if edad >= 18 and es_socio:
+    print("Puede acceder al beneficio total")
+elif edad >= 18 and not es_socio:
+    print("Accede con inscripción previa")
+else:
+    print("No puede acceder")</code></pre>
+    <p><strong>¿Qué hace este código?</strong> Evalúa dos condiciones: si la persona es mayor de edad y si es socio. Dependiendo del resultado, imprime un mensaje distinto.</p>
+  </div>
+
+</body>
+</html>

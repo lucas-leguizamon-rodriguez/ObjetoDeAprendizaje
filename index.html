@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Fácil</title>
+  <style>
+    body {
+      padding-bottom: 80px; 
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #306998;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .logo img {
+      height: 40px;
+      width: auto;
+    }
+
+    .menu {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 10px;
+    }
+
+    .menu li button {
+      background-color: transparent;
+      border: 2px solid #FFD43B;
+      color: #FFD43B;
+      font-size: 15px;
+      padding: 8px 14px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .menu li button:hover,
+    .menu li button.active {
+      background-color: #FFD43B;
+      color: #306998;
+    }
+
+    /* Botón hamburguesa */
+    .hamburguesa {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburguesa div {
+      width: 25px;
+      height: 3px;
+      background-color: #FFD43B;
+      transition: 0.3s;
+    }
+
+    /* Estilos responsive */
+    @media (max-width: 768px) {
+      .menu {
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: #306998;
+        width: 100%;
+        display: none;
+      }
+
+      .menu.show {
+        display: flex;
+      }
+
+      .hamburguesa {
+        display: flex;
+      }
+    }
+
+    #contenido {
+      padding: 30px 20px;
+      min-height: 300px;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #306998;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/community/logos/python-logo-only.png" alt="Logo Python">
+        <span>Python</span>
+      </div>
+
+
+      <div class="hamburguesa" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+
+  
+      <ul class="menu" id="menuNav">
+        <li><button onclick="cargarContenido('inicio.html', this)" id="inicioBtn">Inicio</button></li>
+        <li><button onclick="cargarContenido('variables.html', this)">Variables</button></li>
+        <li><button onclick="cargarContenido('condicionales.html', this)">Condicionales</button></li>
+        <li><button onclick="cargarContenido('ejercicios.html', this)">Ejercicios</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div id="contenido">
+ 
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Python. Sitio creado por el profesor Lucas Leguizamón para fines educativos.</p>
+
+  </footer>
+
+  <script>
+    function cargarContenido(pagina, boton) {
+      fetch(pagina)
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("contenido").innerHTML = data;
+          document.querySelectorAll(".menu li button").forEach(btn => btn.classList.remove("active"));
+          if (boton) boton.classList.add("active");
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      cargarContenido("inicio.html", document.getElementById("inicioBtn"));
+    });
+
+    function toggleMenu() {
+      const menu = document.getElementById("menuNav");
+      menu.classList.toggle("show");
+    }
+  </script>
+</body>
+</html>

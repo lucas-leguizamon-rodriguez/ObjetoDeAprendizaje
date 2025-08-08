@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Variables en Python</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      padding-bottom: 80px; 
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    .contenedor {
+      width: 90%;
+      max-width: 1000px;
+      margin: 20px auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+
+    h2 {
+      text-align: center;
+      color: #306998;
+      margin-bottom: 25px;
+    }
+
+    h3 {
+      color: #306998;
+      margin-bottom: 15px;
+      font-size: 1.4em;
+    }
+
+    pre {
+      background-color: #eee;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      padding-left: 0;
+      list-style-type: none;
+      margin-bottom: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    code {
+      background-color: #dfe6e9;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: "Courier New", monospace;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #306998;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="contenedor">
+    <h2> Variables en Python</h2>
+
+    <p>Una <strong>variable</strong> es un espacio de memoria que se utiliza para almacenar un dato o valor que puede cambiar durante la ejecución del programa. En Python, las variables se crean automáticamente al asignarles un valor usando el signo igual (<code>=</code>).</p>
+
+    <h3> ¿Cómo se asigna una variable?</h3>
+    <p>La sintaxis básica para crear una variable es:</p>
+    <pre><code>nombre_variable = valor</code></pre>
+    <p>Ejemplos:</p>
+    <pre><code>edad = 25
+
+nombre = "Lucía"
+
+peso = 55.8
+
+activo = True</code></pre>
+
+    <h3> Tipos de datos comunes</h3>
+    <table>
+      <tr>
+        <th>Tipo</th>
+        <th>Descripción</th>
+        <th>Ejemplo</th>
+      </tr>
+      <tr>
+        <td><code>int</code></td>
+        <td>Números enteros</td>
+        <td><code>10</code>, <code>-3</code></td>
+      </tr>
+      <tr>
+        <td><code>float</code></td>
+        <td>Números decimales</td>
+        <td><code>3.14</code>, <code>0.5</code></td>
+      </tr>
+      <tr>
+        <td><code>str</code></td>
+        <td>Cadenas de texto</td>
+        <td><code>"Hola"</code>, <code>'Python'</code></td>
+      </tr>
+      <tr>
+        <td><code>bool</code></td>
+        <td>Valores booleanos</td>
+        <td><code>True</code>, <code>False</code></td>
+      </tr>
+    </table>
+
+   
+  
+    <h3> Reglas para nombrar variables</h3>
+    <ul>
+      <li>Deben comenzar con una letra o guion bajo (<code>_</code>)</li>
+      <li>No pueden comenzar con un número</li>
+      <li>No pueden contener espacios ni caracteres especiales</li>
+      <li>Se recomienda usar <strong>snake_case</strong>: palabras separadas por guion bajo (<code>edad_usuario</code>)</li>
+    </ul>
+
+    <h3> Ejemplos con explicación:</h3>
+    <pre><code># Guardamos un número entero
+años = 20
+
+# Guardamos una cadena de texto
+nombre = "Carlos"
+
+# Guardamos un número decimal
+altura = 1.75
+
+# Guardamos un valor booleano
+estudiante = True</code></pre>
+
+    <h3> Más ejemplos útiles</h3>
+    <pre><code># Calcular el área de un rectángulo
+
+base = 5
+
+altura = 10
+
+area = base * altura
+
+print("Área del rectángulo:", area)</code></pre>
+
+    <pre><code># Concatenar cadenas de texto
+
+nombre = "Sofía"
+
+apellido = "García"
+
+nombre_completo = nombre + " " + apellido
+
+print("Nombre completo:", nombre_completo)</code></pre>
+
+    <pre><code># Operaciones con booleanos
+
+mayor_edad = True
+
+tiene_permiso = False
+
+puede_entrar = mayor_edad and tiene_permiso
+
+print("¿Puede entrar?:", puede_entrar)</code></pre>
+
+<h3>¿Qué es print()?</h3>
+<p>La función <code>print()</code> se utiliza para mostrar información por pantalla. Es útil para mostrar mensajes, resultados de operaciones, o verificar valores de variables mientras programás.</p>
+<pre><code>print("Hola mundo")</code></pre>
+
+
+    <h3> Buenas prácticas</h3>
+    <ul>
+      <li>Usar nombres descriptivos: <code>nombre_completo</code>, <code>precio_total</code></li>
+      <li>Evitar nombres como <code>x</code> o <code>dato</code> (salvo en ejemplos simples)</li>
+      <li>Usar siempre <code>snake_case</code> para mejorar la legibilidad</li>
+    </ul>
+
+    <h3> Ejercicio práctico</h3>
+    <p>Completá el siguiente código para que imprima un resumen de una persona con su nombre completo, edad, saldo en su cuenta y si puede acceder a un beneficio especial:</p>
+    <pre><code>nombre = "María"
+apellido = "Pérez"
+edad = 30
+saldo = 1520.75
+es_cliente_vip = True
+
+nombre_completo = nombre + " " + apellido
+
+print("Nombre completo:", nombre_completo)
+print("Edad:", edad)
+print("Saldo disponible:", saldo)</code>
+</pre>
+<p><strong>¿Qué hace este código?</strong> Muestra el nombre completo, edad y saldo de una persona. Además, verifica si tiene acceso a beneficios especiales en base a un valor booleano usando una estructura condicional <code>if</code>.</p>
+
+</div>
+
+</body>
+</html>
