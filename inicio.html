@@ -3,124 +3,178 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inicio - Python Fácil</title>
+  <title>Inicio - Python Explorers</title>
+
+  <!-- Fuente espacial Orbitron -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
+    /* Fondo galaxia animada */
     body {
-      padding-bottom: 120px; 
-      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
+      font-family: 'Orbitron', sans-serif;
       text-align: center;
+      color: #e0e0e0;
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      overflow-x: hidden;
     }
 
-    main {
-      padding: 40px 20px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      background-color: #f4f4f4;
+    /* Estrellas animadas */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 200%;
+      height: 200%;
+      background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+      animation: moveStars 200s linear infinite;
+      z-index: -1;
+      opacity: 0.4;
     }
 
+    @keyframes moveStars {
+      from { transform: translate(0, 0); }
+      to { transform: translate(-1000px, 1000px); }
+    }
+
+    /* Cards */
     .card {
-      background-color: #f0f8ff;
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      max-width: 1000px;
+      background: linear-gradient(135deg, rgba(13,27,42,0.85), rgba(27,38,59,0.85), rgba(44,15,66,0.85));
+      border-left: 6px solid #FFD43B;
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.6);
+      max-width: 980px;
+      width: 100%;
+      text-align: left;
+      padding: 22px;
+      margin: 0 auto 20px;
+      box-sizing: border-box;
+    }
+
+    /* Títulos */
+    h2 {
+      color: #FFD43B;
       text-align: center;
-      padding: 20px;
-      transition: transform 0.3s;
-      margin: 20px auto;
-    }
-
-    .card:hover {
-      transform: scale(1.02);
-    }
-
-    .card img {
-      max-width: 100px;
-      margin-bottom: 15px;
+      font-size: 50px;
+      margin-top: 0;
     }
 
     .card h3 {
-      color: #306998;
-      margin-bottom: 10px;
+      color: #FFD43B;
+      margin: 6px 0 10px;
     }
 
-    .card p {
-      color: #333;
+    /* Texto */
+    .card p, .card li, .card ul {
       font-size: 16px;
-      text-align: justify;
-      margin-bottom: 10px;
+      margin: 8px 0;
+      line-height: 1.5;
     }
 
-    .card-small {
-      max-width: 300px;
+    .card ul {
+      margin-left: 20px;
+    }
+
+    .card li {
+      margin: 6px 0;
+    }
+
+    /* Botón */
+    .center {
+      text-align: center;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #FFD43B;
+      color: #0d1b2a;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-weight: 800;
+      text-decoration: none;
+      border: none;
+      transition: background 0.3s ease;
       cursor: pointer;
-      background-color: #f0f8ff;
-      border: 1px solid #ddd;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      border-radius: 12px;
-      padding: 20px;
-      transition: transform 0.3s;
-      margin: 0;
     }
 
-    .card-small:hover {
-      transform: scale(1.02);
+    .btn:hover {
+      background: #ffcd00;
+    }
+
+    /* Embeds responsivos */
+    .embed-16x9 {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.8);
+      margin-top: 12px;
+    }
+    .embed-16x9 iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Espacio extra antes del Genially */
+    .push-bottom {
+      margin-bottom: 60px;
+    }
+
+    body{
+          margin-bottom: 100px;
     }
   </style>
 </head>
 <body>
+
+  <!-- Título -->
   <div class="card">
-    <img src="https://cdn-icons-png.flaticon.com/128/5968/5968350.png" alt="¿Qué es Python?">
-    <h3>¿Qué es Python?</h3>
-    <p>Python es un lenguaje de programación muy utilizado por su simplicidad y legibilidad. Es ideal para quienes recién comienzan a programar, y también es poderoso para proyectos avanzados como inteligencia artificial, desarrollo web, análisis de datos y más.</p>
-    <p>¡Con Python podés empezar a crear programas útiles desde el primer día!</p>
+    <h2>Python Explorers</h2>
   </div>
 
+  <!-- Intro misión -->
   <div class="card">
-    <h3>Historia e Impacto</h3>
-    <p>Python fue creado por Guido van Rossum a fines de los años 80 y lanzado en 1991. Su objetivo era lograr un lenguaje claro, simple y potente.</p>
-    <p>Actualmente es uno de los lenguajes más usados en el mundo, con aplicaciones en ciencia de datos, automatización, desarrollo web, IA, videojuegos, y más.</p>
-    <p>Su comunidad activa y la gran cantidad de recursos lo convierten en una excelente herramienta tanto para aprender como para trabajar profesionalmente.</p>
+    <h3>🚀 Python Explorers: ¡Salvemos la Tierra!</h3>
+    <p>
+      <strong style="color:#ff4d6d;">¡Atención, explorador!</strong> Nuestros satélites han detectado una  
+      <strong style="color:#ff758f;">amenaza cósmica</strong>: un <strong style="color:#ff0000;">rayo letal intergaláctico</strong>  
+      viaja a la velocidad de la luz directo hacia nuestro hogar.  
+      Solo vos podés descifrar el <strong style="color:#6dd3ff;">código maestro de 3 dígitos</strong>  
+      que activará el escudo planetario y salvará a la humanidad.
+    </p>
+    <p>
+      Deberás superar <em style="color:#f9c74f;">misiones de programación</em> en tres niveles interdimensionales.  
+      Cada triunfo te dará un fragmento del código:
+    </p>
+    <ul>
+      <li><strong style="color:#4cc9f0;">Variables</strong>: recolectá datos críticos — <em>primer dígito</em>.</li>
+      <li><strong style="color:#f77f00;">Condicionales</strong>: tomá decisiones bajo presión — <em>segundo dígito</em>.</li>
+      <li><strong style="color:#80ffdb;">Misión final</strong>: combiná todo y activá el escudo — <em>tercer dígito</em>.</li>
+    </ul>
   </div>
 
-  <main>
-    <div class="card card-small" onclick="cargarContenido('variables.html')">
-      <img src="https://cdn-icons-png.flaticon.com/128/4215/4215538.png" alt="Variables">
-      <h3>Variables</h3>
-      <p>Descubrí cómo almacenar y manipular datos usando variables en Python con ejemplos fáciles y explicativos.</p>
-    </div>
+  <!-- Público objetivo con margen extra -->
+  <div class="card push-bottom">
+    <h3>👥 Público objetivo y conocimientos previos</h3>
+    <ul>
+      <li><strong>Nivel educativo</strong>: Educación media o cursos iniciales de programación.</li>
+      <li><strong>Conocimientos previos</strong>: manejo básico de PC e internet. No se requiere experiencia en Python.</li>
+    </ul>
+  </div>
 
-    <div class="card card-small" onclick="cargarContenido('condicionales.html')">
-      <img src="https://cdn-icons-png.flaticon.com/128/17359/17359058.png" alt="Condicionales">
-      <h3>Condicionales</h3>
-      <p>Aprendé a tomar decisiones con <code>if</code>, <code>elif</code> y <code>else</code> para controlar el flujo de tu programa.</p>
+  <!-- Genially -->
+  <div class="card genially">
+    <h3>🛰️ Misión interactiva en Genially</h3>
+    <p>Aquí podrás seguir la historia y, al final, ingresar el código maestro para salvar la Tierra.</p>
+    <div class="embed-16x9">
+      <iframe title="Python Explorers" src="https://view.genially.com/6888c3ee49b11ee7bd8c5328" allowfullscreen></iframe>
     </div>
+  </div>
 
-    <div class="card card-small" onclick="cargarContenido('ejercicios.html')">
-      <img src="https://cdn-icons-png.flaticon.com/128/1032/1032129.png" alt="Ejercicios">
-      <h3>Ejercicios</h3>
-      <p>Practicá lo aprendido con ejercicios interactivos y afianzá tus conocimientos de programación en Python.</p>
-    </div>
-  </main>
-  <br>
-  <br>
-  <br>
-
-  <script>
-    function cargarContenido(pagina) {
-      fetch(pagina)
-        .then(response => response.text())
-        .then(data => {
-          document.open();
-          document.write(data);
-          document.close();
-        });
-    }
-  </script>
 </body>
 </html>

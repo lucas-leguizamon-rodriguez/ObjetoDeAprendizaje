@@ -3,126 +3,138 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Condicionales en Python</title>
+  <title>Condicionales - Python Explorers</title>
+
+  <!-- Fuente espacial Orbitron -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
-    * {
+    /* Fondo galaxia animada */
+    body {
       margin: 0;
-      padding: 0;
+      padding: 0 0 120px 0; /* espacio extra abajo */
+      font-family: 'Orbitron', sans-serif;
+      text-align: center;
+      color: #e0e0e0;
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      overflow-x: hidden;
+    }
+
+    /* Estrellas animadas */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 200%;
+      height: 200%;
+      background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+      animation: moveStars 200s linear infinite;
+      z-index: -1;
+      opacity: 0.4;
+    }
+    @keyframes moveStars { from { transform: translate(0, 0); } to { transform: translate(-1000px, 1000px); } }
+
+    /* Cards (mismo estilo que Variables) */
+    .card {
+      background: linear-gradient(135deg, rgba(13,27,42,0.85), rgba(27,38,59,0.85), rgba(44,15,66,0.85));
+      border-left: 6px solid #FFD43B;
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.6);
+      max-width: 980px;
+      width: 100%;
+      text-align: left;
+      padding: 22px;
+      margin: 0 auto 20px;
       box-sizing: border-box;
     }
 
-    body {
-      padding-bottom: 80px; 
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-    }
-
-    .contenedor {
-      width: 90%;
-      max-width: 1000px;
-      margin: 20px auto;
-      background-color: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      text-align: left;
-    }
-
+    /* Títulos */
     h2 {
+      color: #FFD43B;
       text-align: center;
-      color: #306998;
-      margin-bottom: 25px;
+      font-size: 42px;
+      margin-top: 0;
     }
+    .card h3 { color: #FFD43B; margin: 6px 0 14px; }
 
-    h3 {
-      color: #306998;
-      margin-bottom: 15px;
-      font-size: 1.4em;
+    /* Texto / listas */
+    .card p, .card li, .card ul {
+      font-size: 16px;
+      margin: 8px 0;
+      line-height: 1.5;
     }
+    .card ul { margin-left: 20px; }
+    .card li { margin: 6px 0; }
 
+    /* Código */
     pre {
-      background-color: #eee;
+      background: rgba(255,255,255,0.07);
       padding: 10px;
-      border-radius: 5px;
+      border-radius: 8px;
       overflow-x: auto;
-      margin-bottom: 15px;
+      color: #eaeaea;
     }
+    code { font-family: "Courier New", monospace; color: #f1fa8c; }
 
-    ul {
-      padding-left: 0;
-      list-style-type: none;
-      margin-bottom: 20px;
+    /* Inputs / botón */
+    input, select {
+      padding: 6px;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+      font-family: inherit;
+      background: #0f172a; color:#E2E8F0;
+      width: 100%;
     }
-
-    li {
-      margin-bottom: 8px;
+    .btn {
+      display: inline-block;
+      background: #FFD43B;
+      color: #0d1b2a;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-weight: 800;
+      text-decoration: none;
+      border: none;
+      transition: background 0.3s ease;
+      cursor: pointer;
+      font-family: inherit;
     }
+    .btn:hover { background: #ffcd00; }
 
-    code {
-      background-color: #dfe6e9;
-      padding: 2px 4px;
-      border-radius: 4px;
-      font-family: "Courier New", monospace;
-    }
-
-    p {
-      margin-bottom: 15px;
+    /* Panel de éxito (igual que Variables) */
+    .success-panel{
+      display:none;
+      margin-top:12px;
+      padding:12px;
+      border-radius:12px;
+      border:1px solid #4ade80;
+      background:rgba(34,197,94,.12);
+      color:#d1fae5;
     }
   </style>
 </head>
 <body>
 
-  <div class="contenedor">
-    <h2> Condicionales en Python</h2>
+  <!-- Título -->
+  <div class="card">
+    <h2>Condicionales</h2>
+  </div>
 
-    <p>Las <strong>condicionales</strong> permiten que un programa tome decisiones evaluando si una condición es verdadera o falsa. En Python, usamos <code>if</code>, <code>elif</code> y <code>else</code> para esto.</p>
-
-    <h3>Sintaxis básica</h3>
+  <!-- Introducción -->
+  <div class="card">
+    <h3>🛡️ ¿Qué es una condicional?</h3>
+    <p>Las <strong>estructuras condicionales</strong> permiten tomar decisiones en el programa según si una condición es <code>True</code> o <code>False</code>.</p>
+    <p>En Python usamos <code>if</code>, <code>elif</code> y <code>else</code> para decidir qué bloque de código ejecutar.</p>
     <pre><code>if condicion:
-    # bloque de código si la condición es verdadera
+    # se ejecuta si la condición es True
+elif otra_condicion:
+    # se ejecuta si la anterior es False y esta es True
 else:
-    # bloque de código si la condición es falsa</code></pre>
+    # se ejecuta si ninguna de las anteriores es True</code></pre>
+  </div>
 
-    <h3> Condición con elif</h3>
-    <pre><code>nota = 7
-
-if nota >= 9:
-    print("Excelente")
-elif nota >= 6:
-    print("Aprobado")
-else:
-    print("Reprobado")</code></pre>
-
-    <h3> ¿Qué es print()?</h3>
-    <p>La función <code>print()</code> se utiliza para mostrar información en pantalla. En el caso de las condicionales, permite visualizar qué camino tomó el programa según la condición.</p>
-
-    <h3> Comparadores más usados</h3>
-    <ul>
-      <li><code>==</code> igual a</li>
-      <li><code>!=</code> distinto de</li>
-      <li><code>&gt;</code> mayor que</li>
-      <li><code>&lt;</code> menor que</li>
-      <li><code>&gt;=</code> mayor o igual que</li>
-      <li><code>&lt;=</code> menor o igual que</li>
-    </ul>
-
-    <h3> Buenas prácticas</h3>
-    <ul>
-      <li>Usá identación consistente (4 espacios) después de <code>if</code>, <code>elif</code> o <code>else</code></li>
-      <li>Escribí condiciones claras y fáciles de leer</li>
-      <li>No olvides los dos puntos <code>:</code> al final de la línea condicional</li>
-    </ul>
-
-    <h3> Ejemplo completo con entrada de datos</h3>
-    <pre><code>edad = 17
-
-if edad >= 18:
-    print("Sos mayor de edad")
-else:
-    print("Sos menor de edad")</code></pre>
-
-    <h3> Ejercicio práctico</h3>
-    <p>Completá el siguiente código que analiza la edad y condición de socio para ver si la persona accede a un beneficio:</p>
+  <!-- Ejemplo -->
+  <div class="card">
+    <h3>🔍 Ejemplo</h3>
     <pre><code>edad = 20
 es_socio = True
 
@@ -132,7 +144,66 @@ elif edad >= 18 and not es_socio:
     print("Accede con inscripción previa")
 else:
     print("No puede acceder")</code></pre>
-    <p><strong>¿Qué hace este código?</strong> Evalúa dos condiciones: si la persona es mayor de edad y si es socio. Dependiendo del resultado, imprime un mensaje distinto.</p>
+  </div>
+
+  <!-- Ejercicio obligatorio -->
+  <div class="card ejercicio">
+    <h3>🛠️ Desafío galáctico</h3>
+    <p>Ingresá los datos correctos para que el programa imprima <strong>"Puede acceder al beneficio total"</strong>:</p>
+
+    <label>Edad:</label>
+    <input type="number" id="edad" >
+    <br><br>
+    <label>Es socio:</label>
+    <select id="socio">
+      <option value="">--Elegir--</option>
+      <option value="True">True</option>
+      <option value="False">False</option>
+    </select>
+    <br><br>
+
+    <button class="btn"
+      onclick="(function(){
+        var edad=Number(document.getElementById('edad').value);
+        var socioVal=document.getElementById('socio').value;
+        var socio=(socioVal==='True');
+        var m=document.getElementById('mensaje');
+
+        if(!socioVal || Number.isNaN(edad)){
+          m.style.color='red';
+          m.textContent='⚠️ Completá ambos campos.';
+          return;
+        }
+
+        if(edad>=18 && socio){
+          m.style.color='lightgreen';
+          m.textContent='✅ Sección Condicionales completada. Tu dígito es 4.';
+          var p=document.getElementById('okPanel'); if(p) p.style.display='block';
+          try{
+            const KEY='pf_progreso_min';
+            const DEF={variables:false,condicionales:false,mision:false};
+            const prog=JSON.parse(localStorage.getItem(KEY)||JSON.stringify(DEF));
+            prog.condicionales=true;
+            localStorage.setItem(KEY,JSON.stringify(prog));
+            localStorage.setItem('pf_digit2','4');
+          }catch(e){}
+          if(window.completar) window.completar('condicionales'); // ✅ actualiza la barra en el index
+        }else{
+          m.style.color='red';
+          m.textContent='❌ Incorrecto. Revisá los datos e intentá otra vez.';
+        }
+      })();">
+      Verificar y marcar completado
+    </button>
+
+    <!-- Panel de éxito -->
+    <div id="okPanel" class="success-panel">
+      <p id="mensaje" style="margin-top:10px; font-weight:bold;"></p>
+      <button class="btn" onclick="(function(){
+        var b=document.getElementById('btnMision');
+        if(b) b.click(); else window.location.href='mision.html';
+      })();">➡️ Ir a la Misión</button>
+    </div>
   </div>
 
 </body>

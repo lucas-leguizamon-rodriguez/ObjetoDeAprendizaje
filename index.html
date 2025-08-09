@@ -1,175 +1,198 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Python Fácil</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Python Explorers – OA Gamificado</title>
   <style>
-    body {
-      padding-bottom: 80px; 
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-      text-align: center;
+    :root{
+      /* 🎨 Paleta: Inspiración Galaxia */
+      --azul:#1E3A8A;       /* primario oscuro */
+      --amarillo:#FFD43B;   /* acento */
+      --bg:#0B1120;         /* fondo general */
+      --card:#1E293B;       /* tarjetas/paneles */
+      --txt:#E2E8F0;        /* texto principal */
+      --muted:#94A3B8;      /* texto secundario */
+      --shadow:0 10px 25px rgba(0,0,0,.35);
+      --radius:14px;
+      --border:rgba(148,163,184,.22);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0; padding:0}
+    body{
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      color:var(--txt); background:var(--bg); line-height:1.55; padding-bottom:96px;
     }
 
-    nav {
-      background-color: #306998;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: relative;
+    /* ====== NAV ====== */
+    nav{
+      background:linear-gradient(90deg, #0F2358, var(--azul));
+      color:#fff; padding:12px 18px;
+      display:flex; align-items:center; justify-content:space-between; gap:12px; position:relative;
+      box-shadow:var(--shadow); border-bottom:1px solid var(--border);
+    }
+    .logo{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px}
+    .logo img{height:38px; filter:brightness(1.1)}
+    .menu{display:flex; list-style:none; gap:10px; margin:0; padding:0}
+    .menu li button{
+      background:transparent; border:2px solid var(--amarillo); color:var(--amarillo);
+      padding:8px 14px; border-radius:10px; cursor:pointer; transition:.2s; font-weight:700
+    }
+    .menu li button:hover, .menu li button.active{background:var(--amarillo); color:#0B1B46}
+    .hamburguesa{display:none; flex-direction:column; gap:5px; cursor:pointer}
+    .hamburguesa div{width:26px; height:3px; background:#ffe57a}
+
+    @media (max-width: 800px){
+      .menu{position:absolute; top:62px; left:0; right:0; background:#13203E; flex-direction:column; display:none; padding:10px; border-bottom:1px solid var(--border)}
+      .menu.show{display:flex}
+      .hamburguesa{display:flex}
     }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: white;
-      font-weight: bold;
-      font-size: 20px;
+    /* ====== LAYOUT ====== */
+    #wrap{
+      max-width:1200px; margin:18px auto; padding:0 16px;
+      display:grid; grid-template-columns:300px 1fr; gap:18px;
+    }
+    @media (max-width: 992px){ #wrap{grid-template-columns:1fr} }
+
+    aside.panel{
+      background:var(--card); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow); height:fit-content;
+      position:sticky; top:12px; border:1px solid var(--border);
+    }
+    aside.panel h3{margin:6px 0 10px; color:#c7d2fe}
+    .stat{display:flex; justify-content:space-between; align-items:center; margin:10px 0 6px; font-weight:700}
+    .barra{height:10px; background:#0f172a; border:1px solid var(--border); border-radius:999px; overflow:hidden}
+    .barra span{display:block; height:100%; width:0%; background:var(--amarillo); transition:width .35s ease}
+    .badges{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
+    .badge{border:1px dashed var(--border); padding:6px 10px; border-radius:999px; font-size:.85rem; background:#0f172a; color:var(--muted)}
+    .badge.ganada{border-style:solid; background:#1c2333; color:#FDE68A}
+    .hint{color:var(--muted); font-size:.92rem; margin-top:6px}
+
+    main#contenido{
+      min-height:380px; background:var(--card); border:1px solid var(--border);
+      border-radius:var(--radius); box-shadow:var(--shadow); padding:0; overflow:hidden;
     }
 
-    .logo img {
-      height: 40px;
-      width: auto;
+    footer{
+      position:fixed; bottom:0; left:0; right:0; background:#0F2358; color:#E5E7EB;
+      text-align:center; padding:14px 10px; font-size:.95rem; box-shadow:var(--shadow); border-top:1px solid var(--border)
     }
+    footer a{color:#FDE68A; text-decoration:none}
 
-    .menu {
-      display: flex;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      gap: 10px;
+    /* ====== botones globales para los fragmentos ====== */
+    .btn{
+      display:inline-block; background:var(--amarillo); color:#0B1B46; border:2px solid var(--amarillo);
+      padding:10px 14px; border-radius:10px; font-weight:800; cursor:pointer; transition:.2s; text-decoration:none;
     }
-
-    .menu li button {
-      background-color: transparent;
-      border: 2px solid #FFD43B;
-      color: #FFD43B;
-      font-size: 15px;
-      padding: 8px 14px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .menu li button:hover,
-    .menu li button.active {
-      background-color: #FFD43B;
-      color: #306998;
-    }
-
-    /* Botón hamburguesa */
-    .hamburguesa {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      gap: 5px;
-    }
-
-    .hamburguesa div {
-      width: 25px;
-      height: 3px;
-      background-color: #FFD43B;
-      transition: 0.3s;
-    }
-
-    /* Estilos responsive */
-    @media (max-width: 768px) {
-      .menu {
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background-color: #306998;
-        width: 100%;
-        display: none;
-      }
-
-      .menu.show {
-        display: flex;
-      }
-
-      .hamburguesa {
-        display: flex;
-      }
-    }
-
-    #contenido {
-      padding: 30px 20px;
-      min-height: 300px;
-    }
-
-    footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background-color: #306998;
-      color: white;
-      text-align: center;
-      padding: 15px 0;
-      font-size: 14px;
-    }
+    .btn:hover{background:transparent; color:var(--amarillo)}
+    .btn.sec{background:#0f172a; border-color:var(--border); color:var(--txt)}
+    .muted{color:var(--muted)}
   </style>
 </head>
 <body>
+  <nav>
+    <div class="logo">
+      <img src="https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/community/logos/python-logo-only.png" alt="Logo Python">
+      <span>Python Explorers – OA Gamificado</span>
+    </div>
+    <div class="hamburguesa" onclick="toggleMenu()"><div></div><div></div><div></div></div>
+    <ul class="menu" id="menuNav">
+      <li><button onclick="cargarContenido('inicio.html', this)" id="inicioBtn">Inicio</button></li>
+      <li><button onclick="abrirNivel('variables.html', 'variables', this)" id="btnVars">Variables</button></li>
+      <li><button onclick="abrirNivel('condicionales.html', 'condicionales', this)" id="btnConds">Condicionales</button></li>
+      <li><button onclick="abrirNivel('mision.html', 'mision', this)" id="btnMision">Misión</button></li>
+    </ul>
+  </nav>
 
-  <header>
-    <nav>
-      <div class="logo">
-        <img src="https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/community/logos/python-logo-only.png" alt="Logo Python">
-        <span>Python</span>
-      </div>
+  <div id="wrap">
+    <aside class="panel">
+      <h3>Progreso de la misión</h3>
 
+      <div class="stat"><span>Variables</span><span id="pVars">0%</span></div>
+      <div class="barra"><span id="bVars"></span></div>
 
-      <div class="hamburguesa" onclick="toggleMenu()">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
+      <div class="stat" style="margin-top:12px;"><span>Condicionales</span><span id="pConds">0%</span></div>
+      <div class="barra"><span id="bConds"></span></div>
 
-  
-      <ul class="menu" id="menuNav">
-        <li><button onclick="cargarContenido('inicio.html', this)" id="inicioBtn">Inicio</button></li>
-        <li><button onclick="cargarContenido('variables.html', this)">Variables</button></li>
-        <li><button onclick="cargarContenido('condicionales.html', this)">Condicionales</button></li>
-        <li><button onclick="cargarContenido('ejercicios.html', this)">Ejercicios</button></li>
-      </ul>
-    </nav>
-  </header>
+      <div class="stat" style="margin-top:12px;"><span>Misión final</span><span id="pMision">0%</span></div>
+      <div class="barra"><span id="bMision"></span></div>
 
-  <div id="contenido">
- 
+      <div class="badges" id="badges"></div>
+      <p class="hint">Completá cada nivel y desbloqueá la siguiente zona 🚀</p>
+      <button class="btn sec" style="margin-top:10px" onclick="reiniciarProgreso()">Reiniciar progreso</button>
+    </aside>
+
+    <main id="contenido"></main>
   </div>
 
   <footer>
-    <p>&copy; 2025 Python. Sitio creado por el profesor Lucas Leguizamón para fines educativos.</p>
-
+    <p>&copy; 2025 Python Explorers. Sitio educativo por Lucas Leguizamón - María De Las Mercedes – Licencia CC BY-NC-SA 4.0</p>
   </footer>
 
   <script>
-    function cargarContenido(pagina, boton) {
-      fetch(pagina)
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById("contenido").innerHTML = data;
-          document.querySelectorAll(".menu li button").forEach(btn => btn.classList.remove("active"));
-          if (boton) boton.classList.add("active");
-        });
+    /* ====== PROGRESO ====== */
+    const defaultProgress = { variables:false, condicionales:false, mision:false };
+    const getProgress   = () => JSON.parse(localStorage.getItem('pf_progreso') || JSON.stringify(defaultProgress));
+    const setProgress   = (p) => localStorage.setItem('pf_progreso', JSON.stringify(p));
+
+    function completar(nivel){
+      const p = getProgress();
+      p[nivel] = true;
+      setProgress(p);
+      actualizarUI();
+      alert('¡Nivel marcado como completado!');
     }
 
-    document.addEventListener("DOMContentLoaded", function () {
-      cargarContenido("inicio.html", document.getElementById("inicioBtn"));
+    function reiniciarProgreso(){
+      setProgress(defaultProgress);
+      actualizarUI();
+    }
+
+    function actualizarUI(){
+      const p = getProgress();
+      // barras
+      document.getElementById('bVars').style.width   = p.variables     ? '100%' : '0%';
+      document.getElementById('bConds').style.width  = p.condicionales ? '100%' : '0%';
+      document.getElementById('bMision').style.width = p.mision        ? '100%' : '0%';
+      // textos
+      document.getElementById('pVars').textContent   = p.variables     ? '100%' : '0%';
+      document.getElementById('pConds').textContent  = p.condicionales ? '100%' : '0%';
+      document.getElementById('pMision').textContent = p.mision        ? '100%' : '0%';
+      // insignias
+      const badges = document.getElementById('badges');
+      badges.innerHTML = '';
+      if(p.variables)     badges.innerHTML += '<span class="badge ganada">🏅 Explorador de Variables</span>';
+      if(p.condicionales) badges.innerHTML += '<span class="badge ganada">🏅 Maestro de Condicionales</span>';
+      if(p.mision)        badges.innerHTML += '<span class="badge ganada">🏆 Código Maestro</span>';
+    }
+
+    /* ====== NAVEGACIÓN / GATING ====== */
+    function cargarContenido(pagina, boton){
+      fetch(pagina).then(r => r.text()).then(html => {
+        document.getElementById('contenido').innerHTML = html;
+        document.querySelectorAll('.menu li button').forEach(b => b.classList.remove('active'));
+        if (boton) boton.classList.add('active');
+      });
+    }
+    function abrirNivel(pagina, nivel, boton){
+      const p = getProgress();
+      if(nivel === 'condicionales' && !p.variables){
+        alert('Primero debés completar Variables.'); return;
+      }
+      if(nivel === 'mision' && (!p.variables || !p.condicionales)){
+        alert('Primero completá Variables y Condicionales.'); return;
+      }
+      cargarContenido(pagina, boton);
+    }
+    function toggleMenu(){ document.getElementById('menuNav').classList.toggle('show'); }
+
+    document.addEventListener('DOMContentLoaded', ()=>{
+      actualizarUI();
+      cargarContenido('inicio.html', document.getElementById('inicioBtn'));
     });
 
-    function toggleMenu() {
-      const menu = document.getElementById("menuNav");
-      menu.classList.toggle("show");
-    }
+    // Exponer completar() para los fragmentos
+    window.completar = completar;
   </script>
 </body>
 </html>

@@ -3,224 +3,218 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Variables en Python</title>
+  <title>Variables - Python Explorers</title>
+
+  <!-- Fuente espacial Orbitron -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
-    * {
+    /* Fondo galaxia animada */
+    body {
       margin: 0;
-      padding: 0;
+      padding: 0 0 120px 0; /* espacio extra abajo */
+      font-family: 'Orbitron', sans-serif;
+      text-align: center;
+      color: #e0e0e0;
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      overflow-x: hidden;
+    }
+
+    /* Estrellas animadas */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 200%;
+      height: 200%;
+      background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+      animation: moveStars 200s linear infinite;
+      z-index: -1;
+      opacity: 0.4;
+    }
+
+    @keyframes moveStars {
+      from { transform: translate(0, 0); }
+      to { transform: translate(-1000px, 1000px); }
+    }
+
+    /* Cards */
+    .card {
+      background: linear-gradient(135deg, rgba(13,27,42,0.85), rgba(27,38,59,0.85), rgba(44,15,66,0.85));
+      border-left: 6px solid #FFD43B;
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.6);
+      max-width: 980px;
+      width: 100%;
+      text-align: left;
+      padding: 22px;
+      margin: 0 auto 20px;
       box-sizing: border-box;
     }
 
-    body {
-      padding-bottom: 80px; 
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-    }
-
-    .contenedor {
-      width: 90%;
-      max-width: 1000px;
-      margin: 20px auto;
-      background-color: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      text-align: left;
-    }
-
+    /* Títulos */
     h2 {
+      color: #FFD43B;
       text-align: center;
-      color: #306998;
-      margin-bottom: 25px;
+      font-size: 42px;
+      margin-top: 0;
     }
 
-    h3 {
-      color: #306998;
-      margin-bottom: 15px;
-      font-size: 1.4em;
+    .card h3 {
+      color: #FFD43B;
+      margin: 6px 0 14px;
     }
 
+    /* Texto */
+    .card p, .card li, .card ul {
+      font-size: 16px;
+      margin: 8px 0;
+      line-height: 1.5;
+    }
+
+    .card ul {
+      margin-left: 20px;
+    }
+
+    .card li {
+      margin: 6px 0;
+    }
+
+    /* Botón */
+    .center { text-align: center; }
+
+    .btn {
+      display: inline-block;
+      background: #FFD43B;
+      color: #0d1b2a;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-weight: 800;
+      text-decoration: none;
+      border: none;
+      transition: background 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover { background: #ffcd00; }
+
+    /* Código */
     pre {
-      background-color: #eee;
+      background: rgba(255,255,255,0.07);
       padding: 10px;
-      border-radius: 5px;
+      border-radius: 8px;
       overflow-x: auto;
-      margin-bottom: 15px;
     }
-
-    ul {
-      padding-left: 0;
-      list-style-type: none;
-      margin-bottom: 20px;
-    }
-
-    li {
-      margin-bottom: 8px;
-    }
-
     code {
-      background-color: #dfe6e9;
-      padding: 2px 4px;
-      border-radius: 4px;
       font-family: "Courier New", monospace;
+      color: #f1fa8c;
     }
 
-    p {
-      margin-bottom: 15px;
+    /* Ejercicio */
+    .ejercicio {
+      background: rgba(255, 249, 196, 0.1);
+      border: 1px solid #FFD43B;
+      padding: 16px;
+      border-radius: 14px;
+      margin-top: 20px;
+    }
+    input {
+      padding: 6px;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+      font-family: inherit;
     }
 
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      margin-bottom: 20px;
-    }
-
-    table, th, td {
-      border: 1px solid #ccc;
-    }
-
-    th, td {
-      padding: 10px;
-      text-align: left;
-    }
-
-    th {
-      background-color: #306998;
-      color: white;
+    /* Panel de éxito */
+    .success-panel{
+      display:none;
+      margin-top:12px;
+      padding:12px;
+      border-radius:12px;
+      border:1px solid #4ade80;
+      background:rgba(34,197,94,.12);
+      color:#d1fae5;
     }
   </style>
 </head>
 <body>
 
-  <div class="contenedor">
-    <h2> Variables en Python</h2>
+  <!-- Título -->
+  <div class="card">
+    <h2>Variables</h2>
+  </div>
 
-    <p>Una <strong>variable</strong> es un espacio de memoria que se utiliza para almacenar un dato o valor que puede cambiar durante la ejecución del programa. En Python, las variables se crean automáticamente al asignarles un valor usando el signo igual (<code>=</code>).</p>
-
-    <h3> ¿Cómo se asigna una variable?</h3>
-    <p>La sintaxis básica para crear una variable es:</p>
-    <pre><code>nombre_variable = valor</code></pre>
-    <p>Ejemplos:</p>
-    <pre><code>edad = 25
-
-nombre = "Lucía"
-
-peso = 55.8
-
+  <!-- Introducción -->
+  <div class="card">
+    <h3>💾 ¿Qué es una variable?</h3>
+    <p>Una <strong>variable</strong> es un contenedor que guarda información. Imaginá que es como una caja con una etiqueta: dentro podés guardar números, texto o valores lógicos, y la etiqueta es el nombre de la variable.</p>
+    <p>En Python, para crear una variable simplemente escribimos su nombre, el signo igual (<code>=</code>) y el valor que queremos guardar.</p>
+    <pre><code>nombre = "Ada"
+edad = 25
 activo = True</code></pre>
+  </div>
 
-    <h3> Tipos de datos comunes</h3>
-    <table>
-      <tr>
-        <th>Tipo</th>
-        <th>Descripción</th>
-        <th>Ejemplo</th>
-      </tr>
-      <tr>
-        <td><code>int</code></td>
-        <td>Números enteros</td>
-        <td><code>10</code>, <code>-3</code></td>
-      </tr>
-      <tr>
-        <td><code>float</code></td>
-        <td>Números decimales</td>
-        <td><code>3.14</code>, <code>0.5</code></td>
-      </tr>
-      <tr>
-        <td><code>str</code></td>
-        <td>Cadenas de texto</td>
-        <td><code>"Hola"</code>, <code>'Python'</code></td>
-      </tr>
-      <tr>
-        <td><code>bool</code></td>
-        <td>Valores booleanos</td>
-        <td><code>True</code>, <code>False</code></td>
-      </tr>
-    </table>
+  <!-- Tipos -->
+  <div class="card">
+    <h3>🔍 Tipos de datos más usados</h3>
+    <ul>
+      <li><code>int</code> → números enteros (<code>42</code>)</li>
+      <li><code>float</code> → números decimales (<code>3.14</code>)</li>
+      <li><code>str</code> → cadenas de texto (<code>"Hola"</code>)</li>
+      <li><code>bool</code> → verdadero o falso (<code>True</code>, <code>False</code>)</li>
+    </ul>
+  </div>
 
-   
+  <!-- Ejercicio obligatorio -->
+  <div class="card ejercicio">
+    <h3>🛠️ Desafío galáctico</h3>
+    <p>El sistema necesita tu nombre completo para autorizarte a la siguiente misión. Completá el valor correcto:</p>
+    <pre><code>nombre = "Ada"
+apellido = "Lovelace"
+nombre_completo = nombre + " " + apellido
+print(nombre_completo)  # Debe mostrar: Ada Lovelace</code></pre>
+    <label>Salida esperada:</label>
+    <input type="text" id="respuesta" placeholder="Escribí aquí" />
+
+    <button class="btn"
+      onclick="(function(){
+        var v=(document.getElementById('respuesta').value||'').trim();
+        var m=document.getElementById('mensaje');
+        if(v==='Ada Lovelace'){
+          m.style.color='lightgreen';
+          m.textContent='✅ Sección Variables completada. Tu dígito es 3.';
+          // mostrar panel de éxito
+          var p=document.getElementById('okPanel'); if(p) p.style.display='block';
+          try{
+            const KEY='pf_progreso_min';
+            const DEF={variables:false,condicionales:false,mision:false};
+            const prog=JSON.parse(localStorage.getItem(KEY)||JSON.stringify(DEF));
+            prog.variables=true;
+            localStorage.setItem(KEY,JSON.stringify(prog));
+            localStorage.setItem('pf_digit1','3');
+          }catch(e){}
+          if(window.completar) window.completar('variables');
+        }else{
+          m.style.color='red';
+          m.textContent='❌ Incorrecto. Revisá el código y probá otra vez.';
+        }
+      })();">
+      Verificar y marcar completado
+    </button>
+
   
-    <h3> Reglas para nombrar variables</h3>
-    <ul>
-      <li>Deben comenzar con una letra o guion bajo (<code>_</code>)</li>
-      <li>No pueden comenzar con un número</li>
-      <li>No pueden contener espacios ni caracteres especiales</li>
-      <li>Se recomienda usar <strong>snake_case</strong>: palabras separadas por guion bajo (<code>edad_usuario</code>)</li>
-    </ul>
 
-    <h3> Ejemplos con explicación:</h3>
-    <pre><code># Guardamos un número entero
-años = 20
+    <!-- Panel de éxito -->
+    <div id="okPanel" class="success-panel">
+      <p id="mensaje" style="margin-top:10px; font-weight:bold;"></p>
+      <button class="btn" onclick="(function(){
+        var b=document.getElementById('btnConds');
+        if(b) b.click(); else window.location.href='condicionales.html';
+      })();">➡️ Ir a Condicionales</button>
+    </div>
+  </div>
 
-# Guardamos una cadena de texto
-nombre = "Carlos"
-
-# Guardamos un número decimal
-altura = 1.75
-
-# Guardamos un valor booleano
-estudiante = True</code></pre>
-
-    <h3> Más ejemplos útiles</h3>
-    <pre><code># Calcular el área de un rectángulo
-
-base = 5
-
-altura = 10
-
-area = base * altura
-
-print("Área del rectángulo:", area)</code></pre>
-
-    <pre><code># Concatenar cadenas de texto
-
-nombre = "Sofía"
-
-apellido = "García"
-
-nombre_completo = nombre + " " + apellido
-
-print("Nombre completo:", nombre_completo)</code></pre>
-
-    <pre><code># Operaciones con booleanos
-
-mayor_edad = True
-
-tiene_permiso = False
-
-puede_entrar = mayor_edad and tiene_permiso
-
-print("¿Puede entrar?:", puede_entrar)</code></pre>
-
-<h3>¿Qué es print()?</h3>
-<p>La función <code>print()</code> se utiliza para mostrar información por pantalla. Es útil para mostrar mensajes, resultados de operaciones, o verificar valores de variables mientras programás.</p>
-<pre><code>print("Hola mundo")</code></pre>
-
-
-    <h3> Buenas prácticas</h3>
-    <ul>
-      <li>Usar nombres descriptivos: <code>nombre_completo</code>, <code>precio_total</code></li>
-      <li>Evitar nombres como <code>x</code> o <code>dato</code> (salvo en ejemplos simples)</li>
-      <li>Usar siempre <code>snake_case</code> para mejorar la legibilidad</li>
-    </ul>
-
-    <h3> Ejercicio práctico</h3>
-    <p>Completá el siguiente código para que imprima un resumen de una persona con su nombre completo, edad, saldo en su cuenta y si puede acceder a un beneficio especial:</p>
-    <pre><code>nombre = "María"
-apellido = "Pérez"
-edad = 30
-saldo = 1520.75
-es_cliente_vip = True
-
-nombre_completo = nombre + " " + apellido
-
-print("Nombre completo:", nombre_completo)
-print("Edad:", edad)
-print("Saldo disponible:", saldo)</code>
-</pre>
-<p><strong>¿Qué hace este código?</strong> Muestra el nombre completo, edad y saldo de una persona. Además, verifica si tiene acceso a beneficios especiales en base a un valor booleano usando una estructura condicional <code>if</code>.</p>
-
-</div>
+  
 
 </body>
 </html>
